@@ -50,7 +50,7 @@ def barplot(data, label1, label2):
     ax.set_xlabel("Country Names", fontsize= 40)
     ax.set_ylabel(label1, fontsize= 40)
     ax.set_title(label2, fontsize=40)
-    ax.set_xticks(x, coun_list1, fontsize=30)
+    ax.set_xticks(x, coun_list2, fontsize=30)
     ax.legend(fontsize=30)
              
     ax.bar_label(bar1, padding=2, rotation=90, fontsize= 20)
@@ -72,7 +72,7 @@ def line_plot(data,label1,label2):
     plt.xlabel("Years", size=16)
     plt.ylabel(label1, size=16)
     plt.xticks(rotation=90)
-    plt.legend(fontsize=14)
+    plt.legend(fontsize=18)
     plt.savefig("lineplot.png")
     plt.show()
              
