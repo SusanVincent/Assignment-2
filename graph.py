@@ -4,16 +4,18 @@ Created on Sat Dec 10 23:54:31 2022
 
 @author: user
 """
-
+#importing pandas,numpy and matplotlib library files
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+#Function 'read_file' reads the datasets and sets the columnn 'Country Name' as index and applies transpose to te data
 def read_file(fname):
     data = pd.read_excel(fname)
     dtranspose= data.set_index('Country Name').transpose()
     return data, dtranspose
-    
+
+#Choosing countries for plotting the graphs  
 count_name= ['Estonia','Finland','India','Japan','Mauritius']
 
 def filter_line_data(data):
@@ -36,6 +38,8 @@ def filter_bar_plot(data):
     
     
 def barplot(data, label1, label2):
+    """This function plots an bar graph"""
+    
     plt.figure(figsize=(30,20))
     ax= plt.subplot(1,1,1)
     x = np.arange(5)
@@ -63,6 +67,8 @@ def barplot(data, label1, label2):
      
            
 def line_plot(data,label1,label2):
+    """This function plots the line graph"""
+    
     plt.figure(figsize=(25,12))
     dd = data.set_index('Country Name')
     tran = dd.transpose()
@@ -73,10 +79,11 @@ def line_plot(data,label1,label2):
     plt.title(label2, size=30)
     plt.xlabel("Years", size=26)
     plt.ylabel(label1, size=26)
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=90, size=22)
     plt.legend(fontsize=20)
     plt.show()
-             
+ 
+#Defining the paths of the datasets          
 Energy_data, Energy_data1 = read_file("C:\\Users\\user\\Desktop\\asgmnt 2\\Enery Use.xls")             
 Energy_data= filter_bar_plot(Energy_data) 
 Co2_data, Co2_data1=read_file("C:\\Users\\user\\Desktop\\asgmnt 2\\CO2 Emission metric tons per capita.xls")   
@@ -87,7 +94,7 @@ power_data= filter_line_data(power_data)
 Population_data, Population_data1 = read_file("C:\\Users\\user\\Desktop\\asgmnt 2\\Total population.xls")
 Population_data = filter_line_data(Population_data)
       
-
+#Labeling the x and y axis of the graphs
 barplot(Energy_data, "Kg of oil equivalent per capita","Energy Consumption")
 barplot(Co2_data, 'Metric tons per capita','Co2 Emission') 
 
